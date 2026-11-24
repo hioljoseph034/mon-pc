@@ -1,0 +1,19 @@
+# Service systemd (VPS avec systemd). À copier dans /etc/systemd/system/kitt-bot.service
+# puis : sudo systemctl daemon-reload && sudo systemctl enable --now kitt-bot
+[Unit]
+Description=KITT (bot Telegram)
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=simple
+User=root
+WorkingDirectory=/home/daytona/kitt
+EnvironmentFile=/home/daytona/kitt/.env
+Environment=OLLAMA_NUM_THREADS=4
+ExecStart=/usr/bin/python3 /home/daytona/kitt/kitt_telegram.py
+Restart=always
+RestartSec=10
+
+[Install]
+WantedBy=multi-user.target

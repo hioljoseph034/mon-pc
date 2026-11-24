@@ -1,0 +1,9 @@
+# Version serveur de KITT (Telegram). Installation : pip install -r requirements-serveur.txt
+python-telegram-bot==21.6
+python-dotenv==1.0.1
+# Voix (facultatif) : reconnaissance (Vosk) et réponses vocales (espeak-ng). Paquets système :
+#   sudo apt install ffmpeg espeak-ng
+# plus un modèle français pour Vosk dans ~/.kitt (voir README_SERVEUR.md).
+vosk==0.3.45
+
+httpx
