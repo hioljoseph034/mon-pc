@@ -1,0 +1,22 @@
+name: Telecharger Kiwix Wikipedia ES Physics
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  download-zim:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Télécharger le fichier ZIM depuis Wikimedia
+        run: |
+          wget -O wikipedia_es_physics_nopic_2026-10.zim "https://dumps.wikimedia.org/other/kiwix/zim/wikipedia/wikipedia_es_physics_nopic_2026-10.zim"
+
+      - name: Publier dans GitHub Releases
+        uses: softprops/action-gh-release@v2
+        with:
+          tag_name: kiwix-es-physics-2026-10
+          files: wikipedia_es_physics_nopic_2026-10.zim
